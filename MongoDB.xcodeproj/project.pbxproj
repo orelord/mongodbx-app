@@ -12,12 +12,13 @@
 		35E352D918D7D28B00CFCC3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E352D818D7D28B00CFCC3B /* main.m */; };
 		35E352DD18D7D28B00CFCC3B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 35E352DB18D7D28B00CFCC3B /* Credits.rtf */; };
 		35E352E018D7D28B00CFCC3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E352DF18D7D28B00CFCC3B /* AppDelegate.m */; };
-		35E352E318D7D28B00CFCC3B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E352E118D7D28B00CFCC3B /* MainMenu.xib */; };
 		35E352E518D7D28B00CFCC3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35E352E418D7D28B00CFCC3B /* Images.xcassets */; };
 		35E352EC18D7D28B00CFCC3B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E352EB18D7D28B00CFCC3B /* XCTest.framework */; };
 		35E352ED18D7D28B00CFCC3B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E352CC18D7D28B00CFCC3B /* Cocoa.framework */; };
 		35E352F518D7D28B00CFCC3B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35E352F318D7D28B00CFCC3B /* InfoPlist.strings */; };
 		35E352F718D7D28B00CFCC3B /* MongoDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E352F618D7D28B00CFCC3B /* MongoDBTests.m */; };
+		35E3538618D7D8A700CFCC3B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E3538518D7D8A700CFCC3B /* MainMenu.xib */; };
+		35E3538818D7DA6600CFCC3B /* mongo_db.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E3538718D7DA6600CFCC3B /* mongo_db.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +44,14 @@
 		35E352DC18D7D28B00CFCC3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		35E352DE18D7D28B00CFCC3B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35E352DF18D7D28B00CFCC3B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		35E352E218D7D28B00CFCC3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		35E352E418D7D28B00CFCC3B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		35E352EA18D7D28B00CFCC3B /* MongoDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MongoDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E352EB18D7D28B00CFCC3B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		35E352F218D7D28B00CFCC3B /* MongoDBTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MongoDBTests-Info.plist"; sourceTree = "<group>"; };
 		35E352F418D7D28B00CFCC3B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		35E352F618D7D28B00CFCC3B /* MongoDBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MongoDBTests.m; sourceTree = "<group>"; };
+		35E3538518D7D8A700CFCC3B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		35E3538718D7DA6600CFCC3B /* mongo_db.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mongo_db.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +119,7 @@
 			children = (
 				35E352DE18D7D28B00CFCC3B /* AppDelegate.h */,
 				35E352DF18D7D28B00CFCC3B /* AppDelegate.m */,
-				35E352E118D7D28B00CFCC3B /* MainMenu.xib */,
+				35E3538518D7D8A700CFCC3B /* MainMenu.xib */,
 				35E352E418D7D28B00CFCC3B /* Images.xcassets */,
 				35E352D318D7D28B00CFCC3B /* Supporting Files */,
 			);
@@ -127,6 +129,7 @@
 		35E352D318D7D28B00CFCC3B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				35E3538718D7DA6600CFCC3B /* mongo_db.png */,
 				35E352D418D7D28B00CFCC3B /* MongoDB-Info.plist */,
 				35E352D518D7D28B00CFCC3B /* InfoPlist.strings */,
 				35E352D818D7D28B00CFCC3B /* main.m */,
@@ -230,10 +233,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35E3538818D7DA6600CFCC3B /* mongo_db.png in Resources */,
 				35E352D718D7D28B00CFCC3B /* InfoPlist.strings in Resources */,
+				35E3538618D7D8A700CFCC3B /* MainMenu.xib in Resources */,
 				35E352E518D7D28B00CFCC3B /* Images.xcassets in Resources */,
 				35E352DD18D7D28B00CFCC3B /* Credits.rtf in Resources */,
-				35E352E318D7D28B00CFCC3B /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,14 +294,6 @@
 				35E352DC18D7D28B00CFCC3B /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		35E352E118D7D28B00CFCC3B /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35E352E218D7D28B00CFCC3B /* Base */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		35E352F318D7D28B00CFCC3B /* InfoPlist.strings */ = {
@@ -466,6 +462,7 @@
 				35E352FC18D7D28B00CFCC3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35E352FD18D7D28B00CFCC3B /* Build configuration list for PBXNativeTarget "MongoDBTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +471,7 @@
 				35E352FF18D7D28B00CFCC3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
