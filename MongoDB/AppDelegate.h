@@ -7,15 +7,25 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#define MIN_LIFETIME 10
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSStatusItem *statusBar;
     IBOutlet NSMenu *statusMenu;
     
     NSStatusItem *statusItem;
     NSImage *statusImage;
+    
+    NSTask *task;
+    NSPipe *in, *out;
+    FILE *logFile;
+    time_t startTime;
+    
+    NSString *logPath;
 }
 
 - (IBAction)openDoc:(id)sender;
+- (void)launchMongoDB;
+
+- (void)stop;
 
 @end

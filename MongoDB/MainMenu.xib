@@ -39,7 +39,7 @@
                 <menuItem title="Quit MongoDB" id="Tgo-N4-RVY">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="terminate:" target="-1" id="UG2-Xj-irx"/>
+                        <action selector="stop:" target="-3" id="RuB-g3-ZyX"/>
                     </connections>
                 </menuItem>
             </items>
