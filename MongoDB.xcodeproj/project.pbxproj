@@ -19,6 +19,7 @@
 		35E352F718D7D28B00CFCC3B /* MongoDBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E352F618D7D28B00CFCC3B /* MongoDBTests.m */; };
 		35E3538618D7D8A700CFCC3B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35E3538518D7D8A700CFCC3B /* MainMenu.xib */; };
 		35E3538818D7DA6600CFCC3B /* mongo_db.png in Resources */ = {isa = PBXBuildFile; fileRef = 35E3538718D7DA6600CFCC3B /* mongo_db.png */; };
+		35E3538A18D7E16600CFCC3B /* mongodb.icns in Resources */ = {isa = PBXBuildFile; fileRef = 35E3538918D7E16600CFCC3B /* mongodb.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		35E352F618D7D28B00CFCC3B /* MongoDBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MongoDBTests.m; sourceTree = "<group>"; };
 		35E3538518D7D8A700CFCC3B /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		35E3538718D7DA6600CFCC3B /* mongo_db.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mongo_db.png; sourceTree = "<group>"; };
+		35E3538918D7E16600CFCC3B /* mongodb.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = mongodb.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		35E352D318D7D28B00CFCC3B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				35E3538918D7E16600CFCC3B /* mongodb.icns */,
 				35E3538718D7DA6600CFCC3B /* mongo_db.png */,
 				35E352D418D7D28B00CFCC3B /* MongoDB-Info.plist */,
 				35E352D518D7D28B00CFCC3B /* InfoPlist.strings */,
@@ -238,6 +241,7 @@
 				35E3538618D7D8A700CFCC3B /* MainMenu.xib in Resources */,
 				35E352E518D7D28B00CFCC3B /* Images.xcassets in Resources */,
 				35E352DD18D7D28B00CFCC3B /* Credits.rtf in Resources */,
+				35E3538A18D7E16600CFCC3B /* mongodb.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
