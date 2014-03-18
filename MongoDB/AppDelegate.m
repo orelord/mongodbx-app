@@ -12,11 +12,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    NSLog( @"Init" );
+    [self launchMongoDB];
 }
-
-- (void)windowWillClose:(NSNotification *)aNotification {
-    NSLog(@"STOP");
+-(void) applicationWillTerminate:(NSNotification *)notification{
+    NSLog( @"END" );
     [self stop];
 }
 
@@ -30,7 +30,7 @@
     [statusItem setImage:statusImage];
     [statusItem setMenu:statusMenu];
     [statusItem setHighlightMode:true];
-    [self launchMongoDB];
+    
 }
 
 - (IBAction)openDoc:(id)sender {
@@ -58,6 +58,7 @@
     
 	[task setStandardInput:in];
 	[task setStandardOutput:out];
+ 
     
 	NSFileHandle *fh = [out fileHandleForReading];
 	NSNotificationCenter *nc;
@@ -152,6 +153,11 @@
     NSLog (@"grep returned:\n%@", string);
     
   
+}
+
+-(IBAction)stop:(id)sender{
+    NSLog(@"STOP");
+    [task terminate];
 }
 
 
