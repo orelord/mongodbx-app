@@ -19,12 +19,6 @@
         </customObject>
         <menu id="BJ7-FQ-cPo">
             <items>
-                <menuItem title="Stop" id="sPN-nd-cq6">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="stop:" target="MMe-so-w4N" id="Z0j-4i-cdf"/>
-                    </connections>
-                </menuItem>
                 <menuItem title="About MongoDB" id="b2s-NA-AW9">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
