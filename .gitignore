@@ -1,0 +1,9 @@
+*~
+.DS_Store
+/MongoDB/MongoDB-Info.plist
+/build
+/cb.plist
+project.xcworkspace
+xcuserdata
+/dist*
+/*.log
