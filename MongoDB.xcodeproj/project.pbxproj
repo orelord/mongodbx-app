@@ -46,23 +46,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		087A1C1F18D8811300D93CBF /* bsondump */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = bsondump; sourceTree = "<group>"; };
-		087A1C2018D8811300D93CBF /* mongo */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongo; sourceTree = "<group>"; };
-		087A1C2118D8811300D93CBF /* mongod */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongod; sourceTree = "<group>"; };
-		087A1C2218D8811300D93CBF /* mongodump */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongodump; sourceTree = "<group>"; };
-		087A1C2318D8811300D93CBF /* mongoexport */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongoexport; sourceTree = "<group>"; };
-		087A1C2418D8811300D93CBF /* mongofiles */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongofiles; sourceTree = "<group>"; };
-		087A1C2518D8811300D93CBF /* mongoimport */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongoimport; sourceTree = "<group>"; };
-		087A1C2618D8811300D93CBF /* mongooplog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongooplog; sourceTree = "<group>"; };
-		087A1C2718D8811300D93CBF /* mongoperf */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongoperf; sourceTree = "<group>"; };
-		087A1C2818D8811300D93CBF /* mongorestore */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongorestore; sourceTree = "<group>"; };
-		087A1C2918D8811300D93CBF /* mongos */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongos; sourceTree = "<group>"; };
-		087A1C2A18D8811300D93CBF /* mongosniff */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongosniff; sourceTree = "<group>"; };
-		087A1C2B18D8811300D93CBF /* mongostat */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongostat; sourceTree = "<group>"; };
-		087A1C2C18D8811300D93CBF /* mongotop */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongotop; sourceTree = "<group>"; };
-		087A1C2D18D8811300D93CBF /* GNU-AGPL-3.0 */ = {isa = PBXFileReference; lastKnownFileType = text; name = "GNU-AGPL-3.0"; path = "../../Downloads/mongodb-osx-x86_64-2.4.9/GNU-AGPL-3.0"; sourceTree = "<group>"; };
-		087A1C2E18D8811300D93CBF /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = "../../Downloads/mongodb-osx-x86_64-2.4.9/README"; sourceTree = "<group>"; };
-		087A1C2F18D8811300D93CBF /* THIRD-PARTY-NOTICES */ = {isa = PBXFileReference; lastKnownFileType = text; name = "THIRD-PARTY-NOTICES"; path = "../../Downloads/mongodb-osx-x86_64-2.4.9/THIRD-PARTY-NOTICES"; sourceTree = "<group>"; };
 		35E352C918D7D28B00CFCC3B /* MongoDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MongoDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E352CC18D7D28B00CFCC3B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		35E352CF18D7D28B00CFCC3B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -107,28 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		087A1C1E18D8811300D93CBF /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				087A1C1F18D8811300D93CBF /* bsondump */,
-				087A1C2018D8811300D93CBF /* mongo */,
-				087A1C2118D8811300D93CBF /* mongod */,
-				087A1C2218D8811300D93CBF /* mongodump */,
-				087A1C2318D8811300D93CBF /* mongoexport */,
-				087A1C2418D8811300D93CBF /* mongofiles */,
-				087A1C2518D8811300D93CBF /* mongoimport */,
-				087A1C2618D8811300D93CBF /* mongooplog */,
-				087A1C2718D8811300D93CBF /* mongoperf */,
-				087A1C2818D8811300D93CBF /* mongorestore */,
-				087A1C2918D8811300D93CBF /* mongos */,
-				087A1C2A18D8811300D93CBF /* mongosniff */,
-				087A1C2B18D8811300D93CBF /* mongostat */,
-				087A1C2C18D8811300D93CBF /* mongotop */,
-			);
-			name = bin;
-			path = "../../Downloads/mongodb-osx-x86_64-2.4.9/bin";
-			sourceTree = "<group>";
-		};
 		35E352C018D7D28B00CFCC3B = {
 			isa = PBXGroup;
 			children = (
@@ -151,10 +112,6 @@
 		35E352CB18D7D28B00CFCC3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				087A1C1E18D8811300D93CBF /* bin */,
-				087A1C2D18D8811300D93CBF /* GNU-AGPL-3.0 */,
-				087A1C2E18D8811300D93CBF /* README */,
-				087A1C2F18D8811300D93CBF /* THIRD-PARTY-NOTICES */,
 				35E352CC18D7D28B00CFCC3B /* Cocoa.framework */,
 				35E352EB18D7D28B00CFCC3B /* XCTest.framework */,
 				35E352CE18D7D28B00CFCC3B /* Other Frameworks */,
