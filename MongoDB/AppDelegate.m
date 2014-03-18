@@ -15,4 +15,16 @@
     // Insert code here to initialize your application
 }
 
+- (void) awakeFromNib {
+    
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    NSBundle *bundle = [NSBundle mainBundle];
+    
+    statusImage = [[NSImage alloc] initWithContentsOfFile:[bundle pathForResource:@"mongo_db" ofType:@"png"]];
+    [statusItem setImage:statusImage];
+    [statusItem setMenu:statusMenu];
+    
+}
+
+
 @end
