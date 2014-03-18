@@ -16,6 +16,6 @@
     NSImage *statusImage;
 }
 
-@property (assign) IBOutlet NSWindow *window;
+- (IBAction)openDoc:(id)sender;
 
 @end

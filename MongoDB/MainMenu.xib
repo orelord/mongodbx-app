@@ -20,6 +20,9 @@
                 </menuItem>
                 <menuItem title="Open Documentation" id="Lw8-PD-Wyd">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openDoc:" target="MMe-so-w4N" id="E6p-Az-YTc"/>
+                    </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="vfP-Oc-HcZ"/>
                 <menuItem title="Open Console" id="A1F-WX-HUS">
