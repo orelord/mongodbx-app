@@ -32,6 +32,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		087A1C9118D8C6AE00D93CBF /* Copy Mongo Bins */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "mongodb-core";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			name = "Copy Mongo Bins";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		087A1C1F18D8811300D93CBF /* bsondump */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = bsondump; sourceTree = "<group>"; };
 		087A1C2018D8811300D93CBF /* mongo */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mongo; sourceTree = "<group>"; };
@@ -213,6 +226,7 @@
 				35E352C518D7D28B00CFCC3B /* Sources */,
 				35E352C618D7D28B00CFCC3B /* Frameworks */,
 				35E352C718D7D28B00CFCC3B /* Resources */,
+				087A1C9118D8C6AE00D93CBF /* Copy Mongo Bins */,
 			);
 			buildRules = (
 			);
