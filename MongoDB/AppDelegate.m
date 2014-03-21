@@ -49,12 +49,13 @@
     
     NSMutableString *launchPath = [[NSMutableString alloc] init];
 	[launchPath appendString:[[NSBundle mainBundle] resourcePath]];
-	[launchPath appendString:@"/mongodbx-core"];
-	//[task setCurrentDirectoryPath:launchPath];
+	[launchPath appendString:@"/mongodb-core"];
+	[task setCurrentDirectoryPath:launchPath];
     
     NSLog(launchPath);
+    [launchPath appendString:@"/bin/mongod"];
    
-	[task setLaunchPath:@"/usr/local/mongodb/bin/mongod"];
+	[task setLaunchPath:launchPath];
     
 	[task setStandardInput:in];
 	[task setStandardOutput:out];
