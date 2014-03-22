@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>mongodb.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.mongodb.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>org.mongodb.${PRODUCT_NAME:rfc1034identifier}X</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

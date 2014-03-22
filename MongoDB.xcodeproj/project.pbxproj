@@ -51,6 +51,7 @@
 		0807C35C18DCCE2600DD3227 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bin; path = "mongodb-core/bin"; sourceTree = "<group>"; };
 		0807C35E18DCCE9400DD3227 /* mongodb-core */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mongodb-core"; sourceTree = "<group>"; };
 		0807C36018DCCF4000DD3227 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bin; path = "mongodb-core/bin"; sourceTree = "<group>"; };
+		087043A818DDCDFA00C35D73 /* MongoDB.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MongoDB.entitlements; sourceTree = "<group>"; };
 		35E352C918D7D28B00CFCC3B /* MongoDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MongoDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35E352CC18D7D28B00CFCC3B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		35E352CF18D7D28B00CFCC3B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -140,6 +141,7 @@
 		35E352D218D7D28B00CFCC3B /* MongoDB */ = {
 			isa = PBXGroup;
 			children = (
+				087043A818DDCDFA00C35D73 /* MongoDB.entitlements */,
 				35E352DE18D7D28B00CFCC3B /* AppDelegate.h */,
 				35E352DF18D7D28B00CFCC3B /* AppDelegate.m */,
 				35E3538518D7D8A700CFCC3B /* MainMenu.xib */,
@@ -229,6 +231,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "https://www.mongodb.org/";
 				TargetAttributes = {
+					35E352C818D7D28B00CFCC3B = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
 					35E352E918D7D28B00CFCC3B = {
 						TestTargetID = 35E352C818D7D28B00CFCC3B;
 					};
@@ -407,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MongoDB/MongoDB-Prefix.pch";
@@ -420,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MongoDB/MongoDB-Prefix.pch";

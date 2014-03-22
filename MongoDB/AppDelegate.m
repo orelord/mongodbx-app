@@ -39,7 +39,7 @@
         NSLog(@"Failed to open url: %@",[url description]);
 }
 - (void) launchMongoDB {
-    //[self setInitParams];
+    [self setInitParams];
     
 	in = [[NSPipe alloc] init];
 	out = [[NSPipe alloc] init];
@@ -54,12 +54,12 @@
     
     NSLog(launchPath);
     [launchPath appendString:@"/bin/mongod"];
-   
+    
 	[task setLaunchPath:launchPath];
     
 	[task setStandardInput:in];
 	[task setStandardOutput:out];
- 
+    
     
 	NSFileHandle *fh = [out fileHandleForReading];
 	NSNotificationCenter *nc;
@@ -87,7 +87,7 @@
 -(void)taskTerminated:(NSNotification *)note{
     [self cleanup];
     /*[self logMessage: [NSString stringWithFormat:@"Terminated with status %d\n",
-                       [[note object] terminationStatus]]];*/
+     [[note object] terminationStatus]]];*/
     
     time_t now = time(NULL);
     if (now - startTime < MIN_LIFETIME) {
@@ -116,7 +116,7 @@
     NSString *s = [[NSString alloc] initWithData: d
                                         encoding: NSUTF8StringEncoding];
     
-     }
+}
 
 -(void)cleanup{
     
@@ -128,38 +128,92 @@
     [task terminate];
 }
 
--(void) teste {
-    NSTask *task2;
-    task2 = [[NSTask alloc] init];
-    [task2 setLaunchPath: @"/usr/local/mongodb/bin/mongod"];
-    
-    /*NSArray *arguments;
-    arguments = [NSArray arrayWithObjects: @"foo", @"bar.txt", nil];
-    [task2 setArguments: arguments];*/
-    
-    NSPipe *pipe;
-    pipe = [NSPipe pipe];
-    [task2 setStandardOutput: pipe];
-    
-    NSFileHandle *file;
-    file = [pipe fileHandleForReading];
-    
-    [task2 launch];
-    
-    NSData *data;
-    data = [file readDataToEndOfFile];
-    
-    NSString *string;
-    string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-    NSLog (@"grep returned:\n%@", string);
-    
-  
-}
-
 -(IBAction)stop:(id)sender{
     NSLog(@"STOP");
     [task terminate];
 }
+
+
+- (NSURL *)applicationSupportFolder {
+    NSString* bundleID = [[NSBundle mainBundle] bundleIdentifier];
+    NSFileManager*fm = [NSFileManager defaultManager];
+    NSURL*    dirPath = nil;
+    
+    // Find the application support directory in the home directory.
+    NSArray* appSupportDir = [fm URLsForDirectory:NSApplicationSupportDirectory
+                                        inDomains:NSUserDomainMask];
+    if ([appSupportDir count] > 0)
+    {
+        // Append the bundle ID to the URL for the
+        // Application Support directory
+        dirPath = [[appSupportDir objectAtIndex:0] URLByAppendingPathComponent:bundleID];
+        
+        // If the directory does not exist, this method creates it.
+        // This method call works in OS X 10.7 and later only.
+        NSError*    theError = nil;
+        if (![fm createDirectoryAtURL:dirPath withIntermediateDirectories:YES
+                           attributes:nil error:&theError])
+        {
+            // Handle the error.
+            
+            return nil;
+        }
+    }
+    
+    return dirPath;
+    
+}
+
+
+- (void)createDiretory:(NSURL *)dir fileManager:(NSFileManager *)fileManager {
+    NSError *err;
+    if(![fileManager fileExistsAtPath:[dir path]]){
+        [fileManager createDirectoryAtURL:dir withIntermediateDirectories:YES attributes:nil error:&err];
+    }
+    if (err) {
+        NSLog(@"error create directory %@", err);
+    }
+}
+
+- (void)createFile:(NSURL *)file fileManager:(NSFileManager *)fileManager {
+    NSString *path = [file path];
+    if(![fileManager fileExistsAtPath:path]){
+        [fileManager createFileAtPath:path contents:nil attributes:nil];
+    }
+}
+
+-(void)setInitParams {
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+	// determine data dir
+	NSURL *dataDir = [self applicationSupportFolder];
+    
+    NSLog(@"dataDir URL: %@",dataDir);
+    // database and views dir
+    NSURL *dbDir = [dataDir URLByAppendingPathComponent:@"data/db"];
+     NSLog(@"dbDir URL: %@",dbDir);
+    
+	[self createDiretory:dbDir fileManager:fileManager];
+    
+    // config dir
+    NSURL *confDir = [dataDir URLByAppendingPathComponent:@"etc"];
+    NSLog(@"confDir URL: %@",confDir);
+    
+    [self createDiretory:confDir fileManager:fileManager];
+    
+    NSURL *confFile = [confDir URLByAppendingPathComponent:@"mongodb.conf"];
+    NSLog(@"confFile URL: %@",confFile);
+    
+   // [self createFile:confFile fileManager:fileManager];
+    
+   
+    
+    NSDictionary* confDict = [NSDictionary dictionaryWithContentsOfURL:confFile];
+    
+        [confDict setValue:dbDir forKey:@"dbpath"];
+    
+    [confDict writeToURL:confFile atomically:YES];
+}
+
 
 
 @end
