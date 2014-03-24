@@ -38,8 +38,10 @@
     if( ![[NSWorkspace sharedWorkspace] openURL:url] )
         NSLog(@"Failed to open url: %@",[url description]);
 }
+
+
 - (void) launchMongoDB {
-    [self setInitParams];
+    NSDictionary *params = [self setInitParams];
     
 	in = [[NSPipe alloc] init];
 	out = [[NSPipe alloc] init];
@@ -51,11 +53,25 @@
 	[launchPath appendString:[[NSBundle mainBundle] resourcePath]];
 	[launchPath appendString:@"/mongodb-core"];
 	[task setCurrentDirectoryPath:launchPath];
-    
-    NSLog(launchPath);
+  
     [launchPath appendString:@"/bin/mongod"];
-    
+    NSLog(@"launchPath: %@", launchPath);
 	[task setLaunchPath:launchPath];
+    
+    
+    NSMutableArray *args =  [[NSMutableArray alloc]init];
+    
+    [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        
+        NSString *param = [@"--" stringByAppendingString:key];
+        [args addObject: param];
+        [args addObject: obj];
+
+    }];
+    
+    NSLog(@"params: %@ \n\n", args);
+
+    [task setArguments:args];
     
 	[task setStandardInput:in];
 	[task setStandardOutput:out];
@@ -86,8 +102,8 @@
 }
 -(void)taskTerminated:(NSNotification *)note{
     [self cleanup];
-    /*[self logMessage: [NSString stringWithFormat:@"Terminated with status %d\n",
-     [[note object] terminationStatus]]];*/
+    NSLog( [NSString stringWithFormat:@"Terminated with status %d\n",
+             [[note object] terminationStatus]]);
     
     time_t now = time(NULL);
     if (now - startTime < MIN_LIFETIME) {
@@ -115,6 +131,8 @@
 - (void)appendData:(NSData *)d {
     NSString *s = [[NSString alloc] initWithData: d
                                         encoding: NSUTF8StringEncoding];
+    
+    NSLog(s);
     
 }
 
@@ -175,45 +193,47 @@
     }
 }
 
-- (void)createFile:(NSURL *)file fileManager:(NSFileManager *)fileManager {
+- (BOOL)createFile:(NSURL *)file fileManager:(NSFileManager *)fileManager {
     NSString *path = [file path];
     if(![fileManager fileExistsAtPath:path]){
         [fileManager createFileAtPath:path contents:nil attributes:nil];
+        return YES;
     }
+    return NO;
 }
 
--(void)setInitParams {
+-(NSDictionary *)setInitParams {
     NSFileManager* fileManager = [NSFileManager defaultManager];
-	// determine data dir
+	
 	NSURL *dataDir = [self applicationSupportFolder];
-    
-    NSLog(@"dataDir URL: %@",dataDir);
-    // database and views dir
+   
     NSURL *dbDir = [dataDir URLByAppendingPathComponent:@"data/db"];
-     NSLog(@"dbDir URL: %@",dbDir);
+    [self createDiretory:dbDir fileManager:fileManager];
     
-	[self createDiretory:dbDir fileManager:fileManager];
     
-    // config dir
     NSURL *confDir = [dataDir URLByAppendingPathComponent:@"etc"];
-    NSLog(@"confDir URL: %@",confDir);
+    
+   
     
     [self createDiretory:confDir fileManager:fileManager];
     
     NSURL *confFile = [confDir URLByAppendingPathComponent:@"mongodb.conf"];
-    NSLog(@"confFile URL: %@",confFile);
     
-   // [self createFile:confFile fileManager:fileManager];
+    NSMutableDictionary *params  = nil;
+    if (![fileManager fileExistsAtPath:[confFile path]]){
+        params = [[NSMutableDictionary alloc] init];
+        
+        [params setObject:[dbDir path] forKey:@"dbpath"];
+        [params setObject:@"27017" forKey:@"port"];
+        
+        [params writeToURL:confFile atomically:YES];
+    }else{
+        params = [[NSMutableDictionary alloc] initWithContentsOfURL:confFile];
+    }
     
-   
     
-    NSDictionary* confDict = [NSDictionary dictionaryWithContentsOfURL:confFile];
+    return params;
     
-        [confDict setValue:dbDir forKey:@"dbpath"];
-    
-    [confDict writeToURL:confFile atomically:YES];
 }
-
-
 
 @end
