@@ -1,35 +1,71 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-  // Project configuration.
   grunt.initConfig({
-    // Metadata.
+
     pkg: grunt.file.readJSON('package.json'),
+
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-    // Task configuration.
+        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+
+    path:{
+        scripts: {
+            src:'src/app/scripts',
+            dist:'./app/scripts'
+        },
+        styles: {
+            src:'src/app/styles',
+            dist:'./app/styles'
+        }
+    },
+
     concat: {
       options: {
         banner: '<%= banner %>',
         stripBanners: true
       },
-      dist: {
-        src: ['lib/<%= pkg.name %>.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+      scripts: {
+        src: ['<%= path.scripts.src %>/**/*.js'],
+        dest: '<%= path.scripts.dist %>/app.js'
+      },
+      styles: {
+        src: ['<%= path.styles.src %>/**/*.css'],
+        dest: '<%= path.styles.dist %>/app.css'
       }
     },
+
     uglify: {
       options: {
         banner: '<%= banner %>'
       },
-      dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+      scripts: {
+        src: '<%= concat.scripts.dest %>',
+        dest: '<%= path.scripts.dist %>/app.min.js'
       }
     },
+
+    cssmin: {
+      styles: {
+        src: '<%= concat.styles.dest %>',
+        dest: '<%= path.styles.dist %>/app.min.css'
+      }
+    },
+
+    htmlmin: {
+        dist: {
+            options: {
+                removeComments: true,
+                collapseWhitespace: true
+            },
+            files: {
+                'index.html': 'src/index.html'
+            }
+        }
+    },
+
     jshint: {
       options: {
         jshintrc:true
@@ -41,6 +77,18 @@ module.exports = function(grunt) {
         src: ['src/app/scripts/**/*.js']
       }
     },
+
+    bowerInstall: {
+        target: {
+            src: ['src/**/*.html'],
+            dependencies:true,
+            devDependencies:false,
+            exclude: [],
+            fileTypes: {},
+            ignorePath: ''
+        }
+    },
+
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -54,6 +102,15 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    copy: {
+        main:{
+            cwd:'src/',
+            src:'src/app/components/**/*.min.js',
+            dest:'app/components/{1,*}/{1,*}.min.js'
+        }
+    },
+
     connect: {
       server:{
         options:{
@@ -63,15 +120,20 @@ module.exports = function(grunt) {
         }
       }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-bower-install');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('server', ['connect','watch']);
-  grunt.registerTask('default', ['jshint',  'concat', 'uglify']);
+  grunt.registerTask('default', ['bowerInstall', 'htmlmin', 'jshint',  'concat', 'uglify', 'cssmin', 'copy']);
 
 };
