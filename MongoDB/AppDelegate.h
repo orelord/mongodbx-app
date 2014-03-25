@@ -13,6 +13,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSStatusItem *statusBar;
     IBOutlet NSMenu *statusMenu;
+    NSMutableDictionary *params;
     
     NSStatusItem *statusItem;
     NSImage *statusImage;
@@ -26,6 +27,7 @@
 }
 
 - (IBAction)openDoc:(id)sender;
+- (IBAction)openConsole:(id)sender;
 - (void)launchMongoDB;
 
 - (IBAction)stop:(id)sender;

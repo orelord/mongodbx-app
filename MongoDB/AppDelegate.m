@@ -12,7 +12,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSLog( @"Init" );
+    [self setInitParams];
     [self launchMongoDB];
 }
 -(void) applicationWillTerminate:(NSNotification *)notification{
@@ -40,8 +40,15 @@
 }
 
 
+- (NSMutableString *)getMongoDBPath {
+    NSMutableString *launchPath = [[NSMutableString alloc] init];
+	[launchPath appendString:[[NSBundle mainBundle] resourcePath]];
+	[launchPath appendString:@"/mongodb-core"];
+    return launchPath;
+}
+
 - (void) launchMongoDB {
-    NSDictionary *params = [self setInitParams];
+   
     
 	in = [[NSPipe alloc] init];
 	out = [[NSPipe alloc] init];
@@ -49,9 +56,8 @@
     
     startTime = time(NULL);
     
-    NSMutableString *launchPath = [[NSMutableString alloc] init];
-	[launchPath appendString:[[NSBundle mainBundle] resourcePath]];
-	[launchPath appendString:@"/mongodb-core"];
+    NSMutableString *launchPath;
+    launchPath = [self getMongoDBPath];
 	[task setCurrentDirectoryPath:launchPath];
   
     [launchPath appendString:@"/bin/mongod"];
@@ -202,7 +208,7 @@
     return NO;
 }
 
--(NSDictionary *)setInitParams {
+-(void)setInitParams {
     NSFileManager* fileManager = [NSFileManager defaultManager];
 	
 	NSURL *dataDir = [self applicationSupportFolder];
@@ -219,7 +225,6 @@
     
     NSURL *confFile = [confDir URLByAppendingPathComponent:@"mongodb.conf"];
     
-    NSMutableDictionary *params  = nil;
     if (![fileManager fileExistsAtPath:[confFile path]]){
         params = [[NSMutableDictionary alloc] init];
         
@@ -232,8 +237,16 @@
     }
     
     
-    return params;
+}
+
+-(IBAction)openConsole:(id)sender{
     
+    NSMutableString *launchPath;
+    launchPath = [self getMongoDBPath];
+    [launchPath appendString:@"/bin/mongo"];
+  
+    
+    [[NSWorkspace sharedWorkspace] openFile:launchPath withApplication:@"Terminal"];
 }
 
 @end
