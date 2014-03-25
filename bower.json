@@ -1,0 +1,21 @@
+{
+    "name": "mongodbx-app-website",
+    "version": "0.0.1",
+    "homepage": "https://orelord.com/mongodbx-app",
+    "authors": [
+        "Diogo Vecchiati <https://github.com/divecch>",
+        "Diego Osse <https://github.com/diegofernandes>"
+    ],
+    "license": "GNU/GPL",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        "src/app/components"
+    ],
+    "dependencies": {
+        "angular": "~1.2.15"
+    }
+}

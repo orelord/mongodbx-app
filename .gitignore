@@ -7,3 +7,5 @@ project.xcworkspace
 xcuserdata
 /dist*
 /*.log
+**components/
+node_modules/
