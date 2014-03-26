@@ -105,9 +105,11 @@ module.exports = function(grunt) {
 
     copy: {
         main:{
-            cwd:'src/',
-            src:'src/app/components/**/*.min.js',
-            dest:'app/components/{1,*}/{1,*}.min.js'
+            cwd: 'src/',
+            expand: true,
+            nonull:true,
+            src: ['app/components/**/*.min.*'],
+            dest:'./'
         }
     },
 
@@ -120,7 +122,6 @@ module.exports = function(grunt) {
         }
       }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
