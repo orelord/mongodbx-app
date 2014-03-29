@@ -2,3 +2,7 @@
 .top-align {
     vertical-align: top !important;
 }
+
+.vertical-space {
+    padding: 15px 0px;
+}
