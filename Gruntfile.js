@@ -29,11 +29,11 @@ module.exports = function(grunt) {
       },
       scripts: {
         src: ['<%= path.scripts.src %>/**/*.js'],
-        dest: '<%= path.scripts.dist %>/app.js'
+        dest: '<%= path.scripts.dist %>/main.js'
       },
       styles: {
         src: ['<%= path.styles.src %>/**/*.css'],
-        dest: '<%= path.styles.dist %>/app.css'
+        dest: '<%= path.styles.dist %>/main.css'
       }
     },
 
@@ -43,14 +43,14 @@ module.exports = function(grunt) {
       },
       scripts: {
         src: '<%= concat.scripts.dest %>',
-        dest: '<%= path.scripts.dist %>/app.min.js'
+        dest: '<%= path.scripts.dist %>/main.min.js'
       }
     },
 
     cssmin: {
       styles: {
         src: '<%= concat.styles.dest %>',
-        dest: '<%= path.styles.dist %>/app.min.css'
+        dest: '<%= path.styles.dist %>/main.min.css'
       }
     },
 
