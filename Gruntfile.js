@@ -108,7 +108,7 @@ module.exports = function(grunt) {
             cwd: 'src/',
             expand: true,
             nonull:true,
-            src: ['app/components/**/*.min.*'],
+            src: ['app/components/**/*.min.*', 'app/images/**'],
             dest:'./'
         }
     },
