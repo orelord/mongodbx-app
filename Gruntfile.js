@@ -135,6 +135,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('server', ['connect','watch']);
-  grunt.registerTask('default', ['bowerInstall', 'htmlmin', 'jshint',  'concat', 'uglify', 'cssmin', 'copy']);
+  grunt.registerTask('default', ['htmlmin', 'jshint',  'concat', 'uglify', 'cssmin', 'copy']);
 
 };
