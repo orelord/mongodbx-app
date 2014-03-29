@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  MongoDB
 //
-//  Created by diRex on 3/17/14.
+//  Created by diRex,diegofernandes on 3/17/14.
 //  Copyright (c) 2014 https://www.mongodb.org/. All rights reserved.
 //
 
@@ -16,7 +16,6 @@
     [self launchMongoDB];
 }
 -(void) applicationWillTerminate:(NSNotification *)notification{
-    NSLog( @"END" );
     [self stop];
 }
 
@@ -47,6 +46,11 @@
     return launchPath;
 }
 
+- (NSString *)toParamKey:(id)key {
+    NSString *param = [@"--" stringByAppendingString:key];
+    return param;
+}
+
 - (void) launchMongoDB {
    
     
@@ -61,7 +65,6 @@
 	[task setCurrentDirectoryPath:launchPath];
   
     [launchPath appendString:@"/bin/mongod"];
-    NSLog(@"launchPath: %@", launchPath);
 	[task setLaunchPath:launchPath];
     
     
@@ -69,13 +72,13 @@
     
     [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         
-        NSString *param = [@"--" stringByAppendingString:key];
+        NSString *param;
+        param = [self toParamKey:key];
         [args addObject: param];
         [args addObject: obj];
 
     }];
     
-    NSLog(@"params: %@ \n\n", args);
 
     [task setArguments:args];
     
@@ -138,7 +141,7 @@
     NSString *s = [[NSString alloc] initWithData: d
                                         encoding: NSUTF8StringEncoding];
     
-    NSLog(s);
+    NSLog(@"Mongod Console: %@",s);
     
 }
 
@@ -153,7 +156,6 @@
 }
 
 -(IBAction)stop:(id)sender{
-    NSLog(@"STOP");
     [task terminate];
 }
 
@@ -226,10 +228,7 @@
     NSURL *confFile = [confDir URLByAppendingPathComponent:@"mongodb.conf"];
     
     if (![fileManager fileExistsAtPath:[confFile path]]){
-        params = [[NSMutableDictionary alloc] init];
-        
-        [params setObject:[dbDir path] forKey:@"dbpath"];
-        [params setObject:@"27017" forKey:@"port"];
+        params = [[NSMutableDictionary alloc] initWithObjects:@[[dbDir path] ,@"27017" ] forKeys:@[@"dbpath",@"port"]];
         
         [params writeToURL:confFile atomically:YES];
     }else{
@@ -240,13 +239,10 @@
 }
 
 -(IBAction)openConsole:(id)sender{
-    
-    NSMutableString *launchPath;
-    launchPath = [self getMongoDBPath];
-    [launchPath appendString:@"/bin/mongo"];
-  
-    
-    [[NSWorkspace sharedWorkspace] openFile:launchPath withApplication:@"Terminal"];
+    NSString *s = [NSString stringWithFormat:
+                   @"tell application \"Terminal\" to activate do script \"%@/bin/mongo %@ %@\"", [self getMongoDBPath],[self toParamKey:@"port"],[params objectForKey:@"port"]];
+    NSAppleScript *as = [[NSAppleScript alloc] initWithSource: s];
+    [as executeAndReturnError:nil];
 }
 
 @end
